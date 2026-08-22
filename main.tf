@@ -16,5 +16,7 @@ resource "aws_instance" "web_server" {
   instance_type = "t2.micro"
   tags = {
     Name = "Web-server"
+    description = "testing"
+    env = "dev"
   }
 } 
