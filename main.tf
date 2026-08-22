@@ -14,6 +14,19 @@ provider "aws" {
 resource "aws_instance" "web_server" {
   ami = "ami-0ac7b260cf76d8865"
   instance_type = "t2.micro"
+  key_name = "my-existing-key"
+  user_data = <<-EOF
+    #!/bin/bash
+    yum update -y
+    yum install httpd -y
+    service httpd start
+    chkconfig httpd on
+    cd /var/www/html
+    echo "<html><body>IP address of this instance: $(hostname)" > index.html
+  EOF
+  data "aws_security_group" "existing" {
+  id = "sg-0123456789abcdef0"
+  }
   tags = {
     Name = "Web-server"
     description = "testing"
