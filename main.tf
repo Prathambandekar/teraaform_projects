@@ -13,7 +13,7 @@ provider "aws" {
 
 resource "aws_instance" "web_server" {
   ami = "ami-0ac7b260cf76d8865"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   key_name = "Login-key"
   vpc_security_group_ids = [
     "sg-0619036717cd195a5"
