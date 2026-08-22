@@ -24,7 +24,7 @@ resource "aws_instance" "web_server" {
     cd /var/www/html
     echo "<html><body>IP address of this instance: $(hostname)" > index.html
   EOF
-  data "aws_security_group" "existing" {
+  data "aws_security_group" "my-sg" {
     id = "sg-0619036717cd195a5"
   }
   tags = {
