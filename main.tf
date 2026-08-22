@@ -25,7 +25,7 @@ resource "aws_instance" "web_server" {
     echo "<html><body>IP address of this instance: $(hostname)" > index.html
   EOF
   data "aws_security_group" "existing" {
-  id = "sg-0123456789abcdef0"
+    id = "sg-0619036717cd195a5"
   }
   tags = {
     Name = "Web-server"
