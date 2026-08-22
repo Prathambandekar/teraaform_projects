@@ -16,8 +16,9 @@ resource "aws_instance" "web_server" {
   instance_type = "t2.micro"
   key_name = "login_key"
   vpc_security_group_ids = [
-    "sg-0123456789abcdef0"
+    "sg-0619036717cd195a5"
   ]
+ subnet_id = "subnet-040e13d7988b6b752"
   user_data = <<-EOF
     #!/bin/bash
     yum update -y
