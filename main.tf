@@ -18,7 +18,6 @@ resource "aws_instance" "web_server" {
   vpc_security_group_ids = [
     "sg-0123456789abcdef0"
   ]
-  subnet_id = "subnet-040e13d7988b6b752"
   user_data = <<-EOF
     #!/bin/bash
     yum update -y
