@@ -14,7 +14,11 @@ provider "aws" {
 resource "aws_instance" "web_server" {
   ami = "ami-0ac7b260cf76d8865"
   instance_type = "t2.micro"
-  key_name = "my-existing-key"
+  key_name = "login_key"
+  vpc_security_group_ids = [
+    "sg-0123456789abcdef0"
+  ]
+  subnet_id = "subnet-040e13d7988b6b752"
   user_data = <<-EOF
     #!/bin/bash
     yum update -y
@@ -24,9 +28,6 @@ resource "aws_instance" "web_server" {
     cd /var/www/html
     echo "<html><body>IP address of this instance: $(hostname)" > index.html
   EOF
-  data "aws_security_group" "my-sg" {
-    id = "sg-0619036717cd195a5"
-  }
   tags = {
     Name = "Web-server"
     description = "testing"
